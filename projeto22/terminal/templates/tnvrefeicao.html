@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FoodOn</title>
+</head>
+<body>
+
+
+{% block nav %}
+{{block.super}}
+{% endblock nav %}
+
+{% block conteudo %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		<form class="form-group" method="POST" action="{% url 'terminal:defbtnpedir' %}">
+			{% csrf_token %}
+		    <div class="form-group">
+		      <label for="inputState">Aluno</label>
+		      
+		      <select id="inputState" class="form-control" name="pessoa" > 
+		        
+		        <option selected>Aluno</option>
+		        
+		        {% for alunos in ALUNOS %}
+		        <option>{{alunos.name}}</option>
+		        {% endfor %}
+
+				{{alertAluno}}
+		      </select>
+
+		    </div>
+			{{NotExistsAlert}}
+		    <div class="form-group">
+		      <label for="inputState">Tipo de Refeição</label>
+		      <select id="inputState" class="form-control" name="comida" >
+		        <option selected>Comida</option>
+		        <option>Café</option>
+		        <option>Almoço</option>
+		        <option>Jantar</option>
+		      </select>
+			{{FoodAlert}}
+			{{SucessAlert2}}
+		    </div>
+			<button class="btn btn-primary" >
+				Solicitar
+			</button>
+		</form>
+
+		</div>
+	</div>
+</div>
+{% endblock conteudo %}
+
+
+</body>
+</html>
+

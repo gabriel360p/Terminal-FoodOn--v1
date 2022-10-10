@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FoodOn</title>
+</head>
+<body>
+{% block nav %}
+{{block.super}}
+{% endblock nav %}
+
+{% block conteudo %}
+
+<h2 class="sucess"> {{SucessAlert}} </h2>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>
+							Nome do Aluno
+						</th>
+						<th>
+							Email
+						</th>
+						<th>
+							ID
+						</th>
+						<th>
+							Ação
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for alunos in ALUNOS %}
+					<tr class="table-success">
+						<td>
+							{{alunos.name}}
+						</td>
+						<td>
+							{{alunos.email}}
+						</td>
+						<td>
+							{{alunos.id}}
+						</td>
+						<td>
+							<a href="{% url 'terminal:defbtndelaluno' alunos.id %}">
+								<button class="btn btn-danger">
+									Desativar
+								</button>
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{{DeletErrorAlert}}
+{{DeletSucessesAlert}}
+{% endblock conteudo %}
+
+</body>
+</html>
+
+

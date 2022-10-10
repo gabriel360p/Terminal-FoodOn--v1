@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FoodOn</title>
+</head>
+<body>
+
+{% block nav %}
+{{block.super}}
+{% endblock nav %}
+
+{% block conteudo %}
+<table class="table table-sm table-bordered">
+	<thead>
+		<tr>
+			<th>
+				ID
+			</th>
+			<th>
+				Nome
+			</th>
+			<th>
+				Refeição
+			</th>
+			<th>
+				Ação
+			</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	{% for cafes in CAFE %}
+		<tr class="table-active">
+			<td>
+				{{cafes.id}}
+			</td>
+			<td>
+				{{cafes.aluno}}
+			</td>
+			<td>
+				{{cafes.refeicao}}
+			</td>
+			<td>
+			<div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+				<a href="{% url 'terminal:defbtnencerrarcafe' cafes.id %}">
+					<button class="btn btn-primary">
+						Encerrar
+					</button>
+				</a>
+			</div>
+			</td>
+		</tr>
+	{% endfor %}	
+	</tbody>
+</table>
+{% endblock conteudo %}
+
+</body>
+</html>

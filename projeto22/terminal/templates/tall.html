@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FoodOn</title>
+</head>
+<body>
+
+{% block nav %}
+{{block.super}}
+{% endblock nav %}
+
+{% block conteudo %}
+
+<div class="container-fluid">
+	<div class="row">
+		
+		<div class="col-md-4">
+		
+
+			<table class="table table-sm table-bordered">
+				<thead>
+					<tr>
+						<th>
+							ID
+						</th>
+						<th>
+							Nome
+						</th>
+						<th>
+							Refeição
+						</th>
+						<th>
+							Ação
+						</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+				{% for cafes in CAFE %}
+					<tr class="table-active">
+						<td>
+							{{cafes.id}}
+						</td>
+						<td>
+							{{cafes.aluno}}
+						</td>
+						<td>
+							{{cafes.refeicao}}
+						</td>
+						<td>
+						<div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+							<a href="{% url 'terminal:defbtnencerrarcafe' cafes.id %}">
+								<button class="btn btn-primary">
+									Encerrar
+								</button>
+							</a>
+						</div>
+						</td>
+					</tr>
+				{% endfor %}	
+				</tbody>
+			</table>
+		
+
+		</div>
+
+
+		<div class="col-md-4">
+			
+
+			<table class="table table-sm table-bordered">
+				<thead>
+					<tr>
+						<th>
+							ID
+						</th>
+						<th>
+							Nome
+						</th>
+						<th>
+							Refeição
+						</th>
+						<th>
+							Ação
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for almocos in ALMOCO %}
+					<tr class="table-active">
+						<td>
+							{{almocos.id}}
+						</td>
+						<td>
+							{{almocos.aluno}}
+						</td>
+						<td>
+							{{almocos.refeicao}}
+						</td>
+						<td>
+							<div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+							<a href="{% url 'terminal:defbtnencerraralmoco' almocos.id %}">
+								<button class="btn btn-primary">
+									Encerrar
+								</button>
+							</a>
+						</div>
+						</td>
+					</tr>
+				{% endfor %}	
+				</tbody>
+			</table>
+		
+
+		</div>
+
+
+
+		<div class="col-md-4">
+
+
+			<table class="table table-sm table-bordered">
+				<thead>
+					<tr>
+						<th>
+							ID
+						</th>
+						<th>
+							Nome
+						</th>
+						<th>
+							Refeição
+						</th>
+						<th>
+							Ação
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for jantas in JANTA %}
+					<tr class="table-active">
+						<td>
+							{{jantas.id}}
+						</td>
+						<td>
+							{{jantas.aluno}}
+						</td>
+						<td>
+							{{jantas.refeicao}}
+						</td>
+						<td>
+							<div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+							<a href="{% url 'terminal:defbtnencerrarjanta' jantas.id %}">
+								<button class="btn btn-primary">
+									Encerrar
+								</button>
+							</a>
+						</div>
+						</td>
+					</tr>
+				{% endfor %}	
+				</tbody>
+			</table>
+
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock conteudo %}
+</body>
+</html>

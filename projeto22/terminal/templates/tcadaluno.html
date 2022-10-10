@@ -1,0 +1,56 @@
+{% extends "base.html" %} <!-- -> Caminho até a página base -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FoodOn</title>
+</head>
+<body>
+
+{% block nav %}
+{{block.super}} <!-- => vai pegar todo o conteúdo do pai (o block nav) que é o "base.html", e vai mostrar aqui -->
+{% endblock nav %}
+
+{% block formAluno %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+					<form role="form" method="POST"  action="{% url 'terminal:defbtncadaluno' %}">
+					{% csrf_token %}
+						<div class="form-group">
+							 
+							<label for="exampleInputPassword1">
+								Nome
+							</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" name="nome" placeholder="Seu Nome"/>
+						</div>
+
+						<div class="form-group">
+							 
+							<label for="exampleInputEmail1">
+								Email address
+							</label>
+							<input type="email" class="form-control" placeholder="Seu Email" id="exampleInputEmail1" name="email" />
+						</div>
+						<button type="submit" class="btn btn-primary">
+							Cadastrar
+						</button>
+					</form>
+						{{ExistsAlert}}
+						{{getError}}
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock formAluno %}
+
+
+</body>
+</html>

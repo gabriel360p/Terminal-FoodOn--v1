@@ -1,0 +1,57 @@
+{% extends "base2.html" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/	1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>FoodOn</title>
+</head>
+<body>
+
+{% block conteudo2 %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		<form class="form-group" method="POST" action="{% url 'terminal:defbtnpedir' %}">
+			{% csrf_token %}
+		    <div class="form-group">
+		      <label for="inputState">Aluno</label>
+		      
+		      <select id="inputState" class="form-control" name="pessoa" > 
+		        
+		        <option selected>Aluno</option>
+		        
+		        {% for alunos in ALUNOS %}
+		        <option>{{alunos.name}}</option>
+		        {% endfor %}
+
+				{{alertAluno}}
+		      </select>
+
+		    </div>
+			{{NotExistsAlert}}
+		    <div class="form-group">
+		      <label for="inputState">Tipo de Refeição</label>
+		      <select id="inputState" class="form-control" name="comida" >
+		        <option selected>Comida</option>
+		        <option>Café</option>
+		        <option>Almoço</option>
+		        <option>Jantar</option>
+		      </select>
+			{{FoodAlert}}
+			{{SucessAlert2}}
+		    </div>
+			<button class="btn btn-primary" >
+				Solicitar
+			</button>
+		</form>
+
+		</div>
+	</div>
+</div>
+{% endblock conteudo2 %}
+
+</body>
+</html>
